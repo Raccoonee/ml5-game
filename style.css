@@ -2,6 +2,43 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #FFFDD0;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  canvas {
+    display: block;
+  }
+  
+  #canvas-container {
+    /* Optional styling for the container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     background-color: #f0f0f0;
   }
   
@@ -21,4 +58,32 @@ html, body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: white;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #clear-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  #clear-button:hover {
+    background-color: #0056b3;
   }
