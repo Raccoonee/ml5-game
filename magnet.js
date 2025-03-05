@@ -1,15 +1,140 @@
 let elementMagnets = [
+  // Base elements
   { name: "fire", color: "#FF5722" },
   { name: "water", color: "#2196F3" },
   { name: "air", color: "#E0F7FA" },
   { name: "earth", color: "#795548" },
-  // Add combined elements with their properties
+  
+  // Original combined elements
   { name: "dust", color: "#E0E0E0" },
   { name: "energy", color: "#FFC107" },
   { name: "rain", color: "#90CAF9" },
   { name: "mud", color: "#8D6E63" },
   { name: "lava", color: "#FF9800" },
-  { name: "steam", color: "#B3E5FC" }
+  { name: "steam", color: "#B3E5FC" },
+  
+  // New elements
+  { name: "acid rain", color: "#4DB6AC" },
+  { name: "airplane", color: "#B0BEC5" },
+  { name: "alarm clock", color: "#FF7043" },
+  { name: "alcohol", color: "#FFECB3" },
+  { name: "algae", color: "#66BB6A" },
+  { name: "alien", color: "#9CCC65" },
+  { name: "allergy", color: "#FFCCBC" },
+  { name: "alligator", color: "#558B2F" },
+  { name: "alpaca", color: "#D7CCC8" },
+  { name: "ambulance", color: "#EF5350" },
+  { name: "angel", color: "#F5F5F5" },
+  { name: "angler", color: "#5D4037" },
+  { name: "ant", color: "#3E2723" },
+  { name: "antarctica", color: "#E0F7FA" },
+  { name: "aquarium", color: "#81D4FA" },
+  { name: "archipelago", color: "#4FC3F7" },
+  { name: "armadillo", color: "#8D6E63" },
+  { name: "armor", color: "#78909C" },
+  { name: "ash", color: "#9E9E9E" },
+  { name: "astronaut", color: "#ECEFF1" },
+  { name: "astronaut ice cream", color: "#F8BBD0" },
+  { name: "atmosphere", color: "#B3E5FC" },
+  { name: "atomic bomb", color: "#FF5252" },
+  { name: "aurora", color: "#CE93D8" },
+  { name: "avalanche", color: "#F5F5F5" },
+  { name: "axe", color: "#8D6E63" },
+  { name: "bacon", color: "#FF8A65" },
+  { name: "bacteria", color: "#81C784" },
+  { name: "baker", color: "#FFECB3" },
+  { name: "bakery", color: "#FFCC80" },
+  { name: "banana", color: "#FFEB3B" },
+  { name: "banana bread", color: "#FFD54F" },
+  { name: "bandage", color: "#EEEEEE" },
+  { name: "bank", color: "#B0BEC5" },
+  { name: "barn", color: "#C62828" },
+  { name: "bat", color: "#424242" },
+  { name: "batman", color: "#212121" },
+  { name: "batter", color: "#FFF9C4" },
+  { name: "bayonet", color: "#9E9E9E" },
+  { name: "bbq", color: "#BF360C" },
+  { name: "beach", color: "#FFF59D" },
+  { name: "beaver", color: "#795548" },
+  { name: "bee", color: "#FDD835" },
+  { name: "beehive", color: "#FFA000" },
+  { name: "beer", color: "#FFB300" },
+  { name: "bicycle", color: "#757575" },
+  { name: "bird", color: "#81C784" },
+  { name: "birdhouse", color: "#A1887F" },
+  { name: "black hole", color: "#212121" },
+  { name: "blade", color: "#9E9E9E" },
+  { name: "blender", color: "#B0BEC5" },
+  { name: "blizzard", color: "#E1F5FE" },
+  { name: "blood", color: "#F44336" },
+  { name: "blueprint", color: "#1976D2" },
+  { name: "boat", color: "#8D6E63" },
+  { name: "boiler", color: "#78909C" },
+  { name: "bone", color: "#F5F5F5" },
+  { name: "bonsai tree", color: "#66BB6A" },
+  { name: "book", color: "#795548" },
+  { name: "bread", color: "#FFB74D" },
+  { name: "brick", color: "#D84315" },
+  { name: "bridge", color: "#8D6E63" },
+  { name: "broom", color: "#A1887F" },
+  { name: "bullet", color: "#9E9E9E" },
+  { name: "bulletproof vest", color: "#607D8B" },
+  { name: "bus", color: "#FFC107" },
+  { name: "butcher", color: "#D32F2F" },
+  { name: "butter", color: "#FFECB3" },
+  { name: "butterfly", color: "#E91E63" },
+  { name: "cactus", color: "#66BB6A" },
+  { name: "cake", color: "#FFAB91" },
+  { name: "camel", color: "#D7CCC8" },
+  { name: "campfire", color: "#FF5722" },
+  { name: "candle", color: "#FFECB3" },
+  { name: "candy cane", color: "#F44336" },
+  { name: "cannon", color: "#424242" },
+  { name: "cape", color: "#F44336" },
+  { name: "car", color: "#90A4AE" },
+  { name: "caramel", color: "#FFB74D" },
+  { name: "carbon dioxide", color: "#ECEFF1" },
+  { name: "carrot", color: "#FF9800" },
+  { name: "cart", color: "#8D6E63" },
+  { name: "cashmere", color: "#EFEBE9" },
+  { name: "castle", color: "#90A4AE" },
+  { name: "cat", color: "#616161" },
+  { name: "catnip", color: "#81C784" },
+  { name: "cauldron", color: "#424242" },
+  { name: "caviar", color: "#263238" },
+  { name: "centaur", color: "#8D6E63" },
+  { name: "cereal", color: "#FFF176" },
+  { name: "chain", color: "#9E9E9E" },
+  { name: "chainsaw", color: "#F44336" },
+  { name: "chameleon", color: "#8BC34A" },
+  { name: "charcoal", color: "#424242" },
+  { name: "cheese", color: "#FFC107" },
+  { name: "cheeseburger", color: "#FF9800" },
+  { name: "chicken", color: "#FFCC80" },
+  { name: "chicken soup", color: "#FFE0B2" },
+  { name: "chicken wing", color: "#FFCC80" },
+  { name: "chimney", color: "#795548" },
+  { name: "christmas stocking", color: "#F44336" },
+  { name: "christmas tree", color: "#2E7D32" },
+  { name: "cigarette", color: "#BDBDBD" },
+  { name: "city", color: "#607D8B" },
+  { name: "clay", color: "#BCAAA4" },
+  { name: "clock", color: "#607D8B" },
+  { name: "cloud", color: "#ECEFF1" },
+  { name: "coal", color: "#424242" },
+  { name: "coconut", color: "#8D6E63" },
+  { name: "coconut milk", color: "#FFFFFF" },
+  { name: "coffin", color: "#5D4037" },
+  { name: "cold", color: "#B3E5FC" },
+  { name: "computer", color: "#78909C" },
+  { name: "computer mouse", color: "#9E9E9E" },
+  { name: "confetti", color: "#F48FB1" },
+  { name: "cookbook", color: "#FFCC80" },
+  { name: "constellation", color: "#303F9F" },
+  { name: "cookie", color: "#FFD54F" },
+  { name: "corpse", color: "#BDBDBD" },
+  { name: "cotton", color: "#F5F5F5" },
+  { name: "cow", color: "#795548" }
 ];
 
 let baseElements = []; // Store our fixed element magnets
@@ -41,8 +166,8 @@ class Magnet {
     textFont(font);
     textSize(size/2);
     textAlign(CENTER, CENTER);
-    this.w = textWidth(this.t) + 60; // Add more padding for icons
-    this.h = size + 20; // Increase height for icons
+    this.w = textWidth(this.t) + 80; // Add more padding for icons
+    this.h = size + 30; // Increase height for icons
     
     // For base elements, position at bottom. For user magnets, position randomly
     if (isBase) {
@@ -76,6 +201,15 @@ class Magnet {
     
     // Draw background rectangle
     fill(this.c);
+    
+    // Add a visible outline for base elements
+    if (this.isBase) {
+      strokeWeight(3);
+      stroke(50, 50, 50, 180); // Dark gray outline with some transparency
+    } else {
+      noStroke();
+    }
+    
     rect(0, 0, this.w, this.h, 8); // Added rounded corners
     
     // Draw element name
@@ -93,8 +227,10 @@ class Magnet {
     
     // Only draw the finger position indicator for non-base elements
     if (!this.isBase && this.isDragging) {
-      fill(255, 0, 0);
-      ellipse(this.fingerx, this.fingery, 10, 10);
+      fill(255, 0, 0, 180); // Semi-transparent red
+      stroke(255);
+      strokeWeight(1);
+      ellipse(this.fingerx, this.fingery, 15, 15);
     }
   }
   
@@ -223,9 +359,12 @@ class Magnet {
   
   touch(thumbx, thumby, indexx, indexy) {
     let distBetweenFingers = dist(thumbx, thumby, indexx, indexy);
-    this.fingerx = abs(thumbx - indexx) + min(thumbx, indexx);
-    this.fingery = abs(thumby - indexy) + min(thumby, indexy);
     
+    // Calculate the midpoint between thumb and index finger
+    this.fingerx = (thumbx + indexx) / 2;
+    this.fingery = (thumby + indexy) / 2;
+    
+    // Calculate distance from magnet to the midpoint between fingers
     let distFromFingers = dist(this.pos.x, this.pos.y, this.fingerx, this.fingery);
     
     if (distBetweenFingers < 40 && distFromFingers < this.w/2) {
@@ -303,7 +442,7 @@ function setupBaseElements() {
     }
     
     // Set position for this element at the bottom of the screen
-    baseElements[i].setPosition(xPos, height - 60);
+    baseElements[i].setPosition(xPos, height - 75);
     
     // Use element color for base elements
     baseElements[i].c = color(baseElements[i].element.color);
