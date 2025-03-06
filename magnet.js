@@ -1,15 +1,34 @@
 let elementMagnets = [
+  // Tier 0 - Basic Elements
   { name: "fire", color: "#FF5722" },
   { name: "water", color: "#2196F3" },
   { name: "air", color: "#E0F7FA" },
   { name: "earth", color: "#795548" },
-  // Add combined elements with their properties
+  
+  // Tier 1 - First Combinations
   { name: "dust", color: "#E0E0E0" },
   { name: "energy", color: "#FFC107" },
   { name: "rain", color: "#90CAF9" },
   { name: "mud", color: "#8D6E63" },
   { name: "lava", color: "#FF9800" },
-  { name: "steam", color: "#B3E5FC" }
+  { name: "steam", color: "#B3E5FC" },
+  
+  // Tier 2 - Secondary Combinations
+  { name: "clay", color: "#D7CCC8" },
+  { name: "lightning", color: "#FFEB3B" },
+  { name: "obsidian", color: "#37474F" },
+  { name: "cloud", color: "#ECEFF1" },
+  { name: "brick", color: "#C62828" },
+  { name: "plant", color: "#66BB6A" },
+  
+  // Tier 3 - Complex Combinations
+  { name: "tree", color: "#33691E" },
+  { name: "storm", color: "#546E7A" },
+  { name: "pottery", color: "#A1887F" },
+  { name: "crystal", color: "#B39DDB" },
+  { name: "glass", color: "#CFD8DC" },
+  { name: "wall", color: "#BCAAA4" },
+  { name: "fog", color: "#F5F5F5" }
 ];
 
 let baseElements = []; // Store our fixed element magnets
@@ -209,6 +228,418 @@ class Magnet {
         ellipse(size/4, -size/10, size/3);
         ellipse(-size/6, -size/2, size/4);
         ellipse(size/6, -size/2, size/4);
+        break;
+
+        // Fixed icons code - resolving the color transparency issues
+
+      // Tier 2 elements
+      case "clay":
+        fill("#D7CCC8");
+        // Clay icon (pottery wheel with clay)
+        ellipse(0, 0, size/1.5, size/3); // Wheel
+        beginShape(); // Clay on wheel
+        vertex(-size/4, -size/6);
+        vertex(-size/6, -size/3);
+        vertex(size/6, -size/3);
+        vertex(size/4, -size/6);
+        vertex(size/4, size/6);
+        vertex(-size/4, size/6);
+        endShape(CLOSE);
+        fill("#C5B9B4"); // Darker shade for details
+        ellipse(0, 0, size/4, size/8); // Center of wheel
+        break;
+        
+      case "lightning":
+        // Lightning bolt with glow effect
+        // First draw glow
+        fill(255, 248, 225, 100);  // This needs to be fixed
+        ellipse(0, 0, size, size);
+        
+        // Then draw lightning
+        fill("#FFEB3B");
+        beginShape();
+        vertex(-size/6, -size/2);
+        vertex(size/8, -size/8);
+        vertex(-size/8, size/6);
+        vertex(size/6, size/2);
+        endShape(CLOSE);
+        
+        // Add some small sparks
+        for (let i = 0; i < 5; i++) {
+          let angle = random(TWO_PI);
+          let dist = random(size/3, size/2);
+          let x = cos(angle) * dist;
+          let y = sin(angle) * dist;
+          let sparkSize = random(size/20, size/10);
+          ellipse(x, y, sparkSize, sparkSize);
+        }
+        break;
+        
+      case "obsidian":
+        // Obsidian (shiny black volcanic glass)
+        fill("#263238"); // Darker base
+        beginShape();
+        vertex(0, -size/2);
+        vertex(size/3, -size/6);
+        vertex(size/5, size/3);
+        vertex(-size/5, size/3);
+        vertex(-size/3, -size/6);
+        endShape(CLOSE);
+        
+        // Add reflective highlights
+        stroke("#FFFFFF");
+        strokeWeight(size/40);
+        line(-size/6, -size/3, size/8, -size/4);
+        line(-size/10, size/6, size/6, 0);
+        noStroke();
+        
+        // Add some texture/cracks
+        stroke("#000000");
+        strokeWeight(size/60);
+        line(0, -size/3, 0, size/5);
+        line(-size/5, 0, size/5, -size/8);
+        noStroke();
+        break;
+        
+      case "cloud":
+        noStroke();
+        // Cloud with dynamic fluffiness
+        fill("#ECEFF1");
+        // Main cloud body
+        beginShape();
+        for (let i = 0; i < TWO_PI; i += 0.2) {
+          let r = size/2 * (0.5 + 0.3 * sin(i * 3));
+          let px = r * cos(i);
+          let py = r * sin(i) * 0.6; // Flatten it a bit
+          vertex(px, py);
+        }
+        endShape(CLOSE);
+        
+        // Add some little cloud puffs
+        fill("#FFFFFF");
+        ellipse(-size/3, -size/8, size/3, size/4);
+        ellipse(size/3, -size/8, size/3, size/4);
+        ellipse(-size/5, size/8, size/4, size/3);
+        ellipse(size/5, size/8, size/4, size/3);
+        
+        // Add some shadow underneath
+        fill("#C8C8C8");
+        ellipse(0, size/6, size/1.5, size/8);
+        break;
+        
+      case "brick":
+        // Detailed brick with texture
+        fill("#C62828"); // Main brick color
+        rect(0, 0, size/1.5, size/2.5, size/30); // Rounded corners
+        
+        // Add brick texture/details
+        fill("#B71C1C"); // Darker shade for details
+        rect(-size/8, 0, size/12, size/2.5); // Left groove
+        rect(size/8, 0, size/12, size/2.5); // Right groove
+        
+        // Add highlights/shadows for 3D effect
+        fill("#FFFFFF"); // Highlight
+        rect(-size/3.5, -size/6, size/1.6, size/12, size/50);
+        
+        fill("#000000"); // Shadow
+        rect(-size/3.5, size/6, size/1.6, size/12, size/50);
+        break;
+        
+      case "plant":
+        // Plant with stem, leaves and soil
+        // Soil
+        fill("#5D4037");
+        arc(0, size/4, size/1.5, size/3, PI, TWO_PI);
+        
+        // Stem
+        fill("#4CAF50");
+        rect(0, 0, size/12, size/2);
+        
+        // Leaves
+        fill("#66BB6A");
+        push();
+        translate(-size/6, -size/6);
+        rotate(-PI/4);
+        ellipse(0, 0, size/4, size/8);
+        pop();
+        
+        push();
+        translate(size/6, -size/4);
+        rotate(PI/4);
+        ellipse(0, 0, size/4, size/8);
+        pop();
+        
+        // Small flower or bud at top
+        fill("#A5D6A7");
+        ellipse(0, -size/3, size/6, size/6);
+        fill("#81C784");
+        ellipse(0, -size/3, size/10, size/10);
+        break;
+
+      // Tier 3 elements
+      case "tree":
+        // Detailed tree with trunk and layered foliage
+        // Trunk
+        fill("#795548");
+        rect(0, size/6, size/8, size/3);
+        
+        // Tree bark texture
+        fill("#6D4C41");
+        rect(-size/25, size/6, size/20, size/3);
+        rect(size/25, size/4, size/20, size/6);
+        
+        // Foliage layers (from bottom to top)
+        fill("#2E7D32"); // Dark green
+        triangle(-size/2.2, size/10, 0, -size/6, size/2.2, size/10);
+        
+        fill("#388E3C"); // Medium green
+        triangle(-size/2.5, -size/8, 0, -size/3, size/2.5, -size/8);
+        
+        fill("#43A047"); // Light green
+        triangle(-size/3, -size/4, 0, -size/2, size/3, -size/4);
+        
+        // Add some texture to the foliage
+        fill("#1B5E20"); // Dark green
+        ellipse(-size/5, -size/8, size/8, size/8);
+        ellipse(size/6, -size/5, size/8, size/8);
+        ellipse(0, -size/3, size/10, size/10);
+        break;
+        
+      case "storm":
+        // Dynamic storm cloud with lightning and rain
+        // Dark storm cloud
+        fill("#37474F");
+        beginShape();
+        for (let i = 0; i < TWO_PI; i += 0.2) {
+          let r = size/2 * (0.6 + 0.3 * sin(i * 4));
+          let px = r * cos(i);
+          let py = r * sin(i) * 0.5 - size/10; // Flatten and raise it
+          vertex(px, py);
+        }
+        endShape(CLOSE);
+        
+        // Add cloud details
+        fill("#455A64");
+        ellipse(-size/3, -size/6, size/3, size/5);
+        ellipse(size/3, -size/6, size/3, size/5);
+        
+        // Lightning bolt with glow effect
+        fill("#FFFFC8"); // Yellow glow
+        ellipse(0, size/8, size/4, size/4);
+        
+        fill("#FFEB3B");
+        beginShape();
+        vertex(-size/20, -size/10);
+        vertex(size/15, size/15);
+        vertex(-size/25, size/8);
+        vertex(size/10, size/3);
+        endShape(CLOSE);
+        
+        // Rain drops
+        fill("#64B5F6");
+        for (let i = 0; i < 6; i++) {
+          let x = map(i, 0, 5, -size/2, size/2);
+          let y = size/5 + (i % 2) * size/10;
+          ellipse(x, y, size/30, size/20);
+        }
+        break;
+        
+      case "pottery":
+        // Detailed pottery vase with decorations
+        // Main vase body
+        fill("#A1887F");
+        beginShape();
+        vertex(-size/3, size/3);
+        vertex(-size/3.5, size/6);
+        vertex(-size/4, -size/6);
+        vertex(-size/5, -size/3);
+        vertex(size/5, -size/3);
+        vertex(size/4, -size/6);
+        vertex(size/3.5, size/6);
+        vertex(size/3, size/3);
+        endShape(CLOSE);
+        
+        // Vase opening
+        fill("#8D6E63");
+        ellipse(0, -size/3, size/2.5, size/6);
+        fill("#795548");
+        ellipse(0, -size/3, size/3.5, size/12);
+        
+        // Decorative patterns
+        stroke("#5D4037");
+        strokeWeight(size/60);
+        noFill();
+        
+        // Neck pattern
+        line(-size/4, -size/4, size/4, -size/4);
+        
+        // Middle pattern
+        beginShape();
+        for (let i = 0; i < TWO_PI; i += PI/8) {
+          let r = size/4;
+          let px = r * cos(i) * 0.8; // Flatten it horizontally
+          let py = r * sin(i) * 0.2 + size/10; // Flatten it vertically and position
+          curveVertex(px, py);
+        }
+        endShape();
+        
+        // Base pattern
+        line(-size/3, size/4, size/3, size/4);
+        
+        noStroke();
+        break;
+        
+      case "crystal":
+        // Multifaceted crystal with reflections
+        // Main crystal body
+        fill("#B39DDB");
+        beginShape();
+        vertex(0, -size/2);
+        vertex(size/4, -size/4);
+        vertex(size/4, size/4);
+        vertex(0, size/2);
+        vertex(-size/4, size/4);
+        vertex(-size/4, -size/4);
+        endShape(CLOSE);
+        
+        // Inner facets
+        fill("#9575CD");
+        beginShape();
+        vertex(0, -size/3);
+        vertex(size/6, -size/6);
+        vertex(0, size/6);
+        vertex(-size/6, -size/6);
+        endShape(CLOSE);
+        
+        // Highlights/reflections
+        fill("#FFFFFF");
+        beginShape();
+        vertex(-size/4, -size/4);
+        vertex(-size/8, -size/8);
+        vertex(-size/4, size/8);
+        endShape(CLOSE);
+        
+        // Sparkle effects
+        fill("#FFFFFF");
+        for (let i = 0; i < 3; i++) {
+          let angle = random(TWO_PI);
+          let r = random(size/10, size/6);
+          let x = r * cos(angle);
+          let y = r * sin(angle);
+          
+          // Star shape
+          push();
+          translate(x, y);
+          rotate(random(TWO_PI));
+          for (let j = 0; j < 4; j++) {
+            rotate(PI/2);
+            stroke("#FFFFFF");
+            line(0, 0, 0, size/20);
+          }
+          pop();
+        }
+        noStroke();
+        break;
+        
+      case "glass":
+        // Realistic glass with transparency and reflections
+        // Semi-transparent glass pane
+        fill("#C8DCF0");
+        rect(0, 0, size/1.5, size/1.5, size/30);
+        
+        // Add glass shine/reflections
+        stroke("#FFFFFF");
+        strokeWeight(size/40);
+        line(-size/4, -size/4, size/4, size/4);
+        
+        // Add subtle blue tint along edges
+        strokeWeight(size/20);
+        stroke("#B4C8FF");
+        noFill();
+        rect(0, 0, size/1.3, size/1.3, size/25);
+        
+        // Edge highlight
+        strokeWeight(size/60);
+        stroke("#FFFFFF");
+        rect(0, 0, size/1.5, size/1.5, size/30);
+        
+        noStroke();
+        break;
+        
+      case "wall":
+        // Detailed brick wall with mortar and texture
+        // Background/mortar
+        fill("#E0E0E0");
+        rect(0, 0, size/1.2, size/1.2);
+        
+        // Brick pattern with offset rows
+        fill("#C62828");
+        
+        // First row
+        for (let x = -size/2.8; x <= size/2.8; x += size/3.5) {
+          rect(x, -size/4, size/4, size/8);
+          
+          // Add brick texture
+          fill("#B71C1C");
+          rect(x, -size/4, size/20, size/8); // Shadow side
+          fill("#D32F2F");
+          rect(x + size/12, -size/4, size/20, size/8); // Highlight side
+          fill("#C62828"); // Reset for next brick
+        }
+        
+        // Second row (offset)
+        for (let x = -size/3.8; x <= size/3.8; x += size/3.5) {
+          rect(x, 0, size/4, size/8);
+          
+          // Add brick texture
+          fill("#B71C1C");
+          rect(x, 0, size/20, size/8);
+          fill("#D32F2F");
+          rect(x + size/12, 0, size/20, size/8);
+          fill("#C62828");
+        }
+        
+        // Third row
+        for (let x = -size/2.8; x <= size/2.8; x += size/3.5) {
+          rect(x, size/4, size/4, size/8);
+          
+          // Add brick texture
+          fill("#B71C1C");
+          rect(x, size/4, size/20, size/8);
+          fill("#D32F2F");
+          rect(x + size/12, size/4, size/20, size/8);
+          fill("#C62828");
+        }
+        break;
+        
+      case "fog":
+        // Atmospheric fog with depth and movement
+        noStroke();
+        
+        // Create layered fog effect with different opacities
+        for (let i = 0; i < 12; i++) {
+          // Vary the opacity based on position to create depth
+          let fogColor = color("#F5F5FA");
+          fogColor.setAlpha(map(i, 0, 12, 50, 200));
+          fill(fogColor);
+          
+          // Create swirling fog effect
+          let xOffset = sin(i * 0.5) * size/6;
+          let yOffset = cos(i * 0.5) * size/8;
+          let fogWidth = map(i, 0, 12, size/4, size/1.5);
+          let fogHeight = map(i, 0, 12, size/6, size/3);
+          
+          ellipse(xOffset, yOffset, fogWidth, fogHeight);
+        }
+        
+        // Add some subtle highlights
+        fill("#FFFFFF");
+        ellipse(size/6, -size/8, size/3, size/5);
+        ellipse(-size/5, size/10, size/4, size/4);
+        
+        // Add subtle depth shadows
+        fill("#C8C8DC");
+        ellipse(0, size/6, size, size/3);
         break;
         
       default:

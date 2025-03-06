@@ -6,6 +6,7 @@ let video; let handPose; let hands = [];
 let font; let size = 35;
 
 const elementCombinations = {
+  // Tier 1 - Basic Combinations (Original)
   "air+earth": "dust",
   "earth+air": "dust",
   "air+fire": "energy",
@@ -17,7 +18,35 @@ const elementCombinations = {
   "fire+earth": "lava",
   "earth+fire": "lava",
   "fire+water": "steam",
-  "water+fire": "steam"
+  "water+fire": "steam",
+  
+  // Tier 2 - Secondary Combinations
+  "dust+water": "clay",
+  "water+dust": "clay",
+  "energy+fire": "lightning",
+  "fire+energy": "lightning",
+  "lava+water": "obsidian",
+  "water+lava": "obsidian",
+  "steam+air": "cloud",
+  "air+steam": "cloud",
+  "mud+fire": "brick",
+  "fire+mud": "brick",
+  "rain+earth": "plant",
+  "earth+rain": "plant",
+  
+  // Tier 3 - Complex Combinations
+  "plant+energy": "tree",
+  "energy+plant": "tree",
+  "cloud+energy": "storm",
+  "energy+cloud": "storm",
+  "clay+fire": "pottery",
+  "fire+clay": "pottery",
+  "obsidian+energy": "crystal",
+  "energy+obsidian": "crystal",
+  "lightning+dust": "glass",
+  "dust+lightning": "glass",
+  "brick+brick": "wall",
+  "cloud+cloud": "fog"
 };
 
 function preload() {
