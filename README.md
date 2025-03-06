@@ -38,7 +38,6 @@ The game includes over 200 element combinations from the original Little Alchemy
 - **Demo Design**: Patt Vira - For the initial demo that inspired this game's design
 - **Hand Tracking Technology**: ml5.js and MediaPipe HandPose
 - **Icons and Visual Design**: Custom implementation inspired by Little Alchemy's visual style
-- **Development**: [Your Name/Organization]
 
 ## Future Enhancements
 
@@ -49,6 +48,4 @@ The game includes over 200 element combinations from the original Little Alchemy
 - Save/load functionality
 - Mobile touch support
 
-## License
 
-[Include license information here]
